@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
 
   containerView: {
     backgroundColor: theme.blue,
-    height: 150,
+    height: 120,
     justifyContent: 'center',
     alignItems: 'center',
   },
