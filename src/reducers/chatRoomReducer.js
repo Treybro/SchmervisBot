@@ -3,31 +3,31 @@
  */
 
 import { 
-  FETCH_CHATS_FROM_CHANNEL,
-  RECEIVE_CHATS,
+  FETCH_TICKET_DATA,
+  RECEIVE_TICKET_DATA,
 } from 'ChatRoomActions';
 
 //  Default state to prepare for null
 const chatRoomReducerDefaultState = {
-  fetchingChats: false,
+  fetchingMessages: false,
   channelName: '',
-  chats: [],
+  messages: [],
 };
 
 const chatRoomReducer = (state = chatRoomReducerDefaultState, action) => {
   switch(action.type) {
-  case FETCH_CHATS_FROM_CHANNEL: {
+  case FETCH_TICKET_DATA: {
     return {
       ...state,
       channelName: action.channelName,
-      fetchingChats: true,
+      fetchingMessages: true,
     };
   }
-  case RECEIVE_CHATS: {
+  case RECEIVE_TICKET_DATA: {
     return {
       ...state,
-      fetchingChats: false,
-      chats: action.chats,
+      fetchingMessages: false,
+      messages: action.data.ticketMessages,
     };
   }
   default:

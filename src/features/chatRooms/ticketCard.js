@@ -12,6 +12,7 @@ import theme from 'Theme';
 
 /*
 * Displays the ticket title for a ticket
+* This would ideally be an image view, just a normal view with text for the moment - will refactor later if I have time
 */
 const TicketCard = (props) => {
   const { ticketTitle } = props;

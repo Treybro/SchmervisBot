@@ -9,7 +9,7 @@ import {
   StyleSheet,
 } from 'react-native';
 import theme from 'Theme';
-import { getAvailableChannels } from 'ChatRoomActions';
+import { getTicketData } from 'ChatRoomActions';
 
 /*
 * Responsible for rendering a channel
@@ -20,7 +20,7 @@ const ChannelListItem = (props) => {
     <TouchableOpacity 
       onPress={() => {
         navigationProps.navigate('ChatRoom', {channelName: channelName});
-        dispatch(getAvailableChannels (channelName));
+        dispatch(getTicketData (channelName));
       }}
       style={styles.row}>
       <Text style={styles.channelText}>{channelName}</Text>

@@ -1,0 +1,21 @@
+{
+  "ticketTitle": "General Inquiry",
+  "ticketCardUrl": "http://httpstat.us/200",
+  "ticketMessages": [
+    {
+      "date": "",
+      "sender": "servisbot",
+      "messageContent": "Hi Mike, how can we help you today?"
+    },
+    {
+      "date": "",
+      "sender": "servisbot",
+      "messageContent": "I've been working on the rail road..... all the live long day!"
+    },
+    {
+      "date": "",
+      "sender": "servisbot",
+      "messageContent": "Just to pass the time away?"
+    }
+  ]
+}

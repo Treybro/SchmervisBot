@@ -2,35 +2,35 @@
  *  @providesModule ChatRoomActions
  */
 
-export const GET_CHATS_FOR_CHANNEL = 'GET_CHATS_FOR_CHANNEL';
-export const FETCH_CHATS_FROM_CHANNEL = 'FETCH_CHATS_FROM_CHANNEL';
-export const RECEIVE_CHATS = 'RECEIVE_CHATS';
+export const FETCH_TICKET_DATA = 'FETCH_TICKET_DATA';
+export const RECEIVE_TICKET_DATA = 'RECEIVE_TICKET_DATA';
 
 import appSettings from 'AppSettings';
+const sampleTicketData = require ('../data/sampleTicketData.json');
 
-//  Tell the app to get chats for a given channel
-export const getAvailableChannels = channelName => {
+//  Tell the app to get ticket information for a given channel
+export const getTicketData = channelName => {
   return function (dispatch) {
-    dispatch (fetchChats(channelName));
+    dispatch (fetchTicketData(channelName));
     let load = setInterval(() => {
       clearInterval (load);
-      return dispatch (receiveChats(['Hello','From','Mike']));
+      return dispatch (receiveTicketData(sampleTicketData));
     }, appSettings.fakeLoadingTime);
   };
 };
 
-//  Tell the app we are fetching chats for a given channel
-export const fetchChats = channelName => {
+//  Tell the app we are fetching ticket data for a given channel
+export const fetchTicketData = channelName => {
   return {
-    type: FETCH_CHATS_FROM_CHANNEL,
+    type: FETCH_TICKET_DATA,
     channelName,
   };
 };
 
-//  Tell the app we received a list of available channels
-export const receiveChats = chats => {
+//  Tell the app we received a list of messages
+export const receiveTicketData = data => {
   return {
-    type: RECEIVE_CHATS,
-    chats,
+    type: RECEIVE_TICKET_DATA,
+    data,
   };
 };
