@@ -15,11 +15,16 @@ import theme from 'Theme';
 */
 const ChatBubble = (props) => {
   const { messageContent, date, sender } = props;
+
+  /* 
+  * Going to determine which chat to render here 
+  * (usually I'd have an id for the logged in user etc, 
+  * but putting here for the moment for time constraints)
+  */
   return(
-    <View style={styles.leftBubble}>
+    <View style={(sender === 'schmervisbot') ? [styles.chatBubble, styles.left] : [styles.chatBubble, styles.right]}>
       <Text style={styles.messageContent}>{messageContent}</Text>
-      <Text style={styles.messageContent}>{date}</Text>
-      <Text style={styles.messageContent}>{sender}</Text>
+      <Text style={styles.metaData}>{(sender === 'schmervisbot') ? 'You' : sender} - {date}</Text>
     </View>
   );
 };
@@ -32,27 +37,29 @@ ChatBubble.propTypes = {
 
 const styles = StyleSheet.create({
 
-  leftBubble: {
+  chatBubble: {
     alignSelf: 'flex-start',
     margin: 10,
-    marginLeft: 10,
-    height: 50,
-    width: 200,
+    marginBottom: 20,
     borderRadius: 5,
-    backgroundColor: theme.blue,
+    padding: 15,
   },
-  rightBubble: {
-    alignSelf: 'flex-end',
-    margin: 10,
-    marginRight: 10,
-    height: 50,
-    width: 200,
-    borderRadius: 5,
+  left: {
     backgroundColor: theme.blue,
+    alignSelf: 'flex-start',
+  },
+  right: {
+    backgroundColor: theme.darkGrey,
+    alignSelf: 'flex-end',
   },
   messageContent: {
     fontSize: 14,
-    backgroundColor: theme.blue,
+    color: theme.white,
+  },
+  metaData: {
+    fontSize: 12,
+    color: theme.white,
+    alignSelf: 'flex-end',
   },
 });
 

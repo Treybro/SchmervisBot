@@ -3,17 +3,17 @@
   "ticketCardUrl": "http://httpstat.us/200",
   "ticketMessages": [
     {
-      "date": "",
+      "date": "20:05pm",
       "sender": "servisbot",
       "messageContent": "Hi Mike, how can we help you today?"
     },
     {
-      "date": "",
-      "sender": "servisbot",
+      "date": "20:10pm",
+      "sender": "schmervisbot",
       "messageContent": "I've been working on the rail road..... all the live long day!"
     },
     {
-      "date": "",
+      "date": "20:11pm",
       "sender": "servisbot",
       "messageContent": "Just to pass the time away?"
     }
