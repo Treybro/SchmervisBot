@@ -7,8 +7,10 @@ import {
   View,
   Text,
   StyleSheet,
+  Image,
 } from 'react-native';
 import theme from 'Theme';
+import getAsset from 'Assets';
 
 /*
 * Responsible for rendering a chat message
@@ -22,11 +24,19 @@ const ChatBubble = (props) => {
   * but putting here for the moment for time constraints)
   */
   return(
-    <View style={(sender === 'schmervisbot') ? [styles.chatBubble, styles.left] : [styles.chatBubble, styles.right]}>
-      <Text style={styles.messageContent}>{messageContent}</Text>
-      <Text style={styles.metaData}>{(sender === 'schmervisbot') ? 'You' : sender} - {date}</Text>
+    <View style={(sender === 'schmervisbot') ? [styles.containerView, styles.left] : [styles.containerView, styles.right]}>
+      {(sender === 'schmervisbot') ? renderAvatar(true) : () => {}}
+      <View style={(sender === 'schmervisbot') ? [styles.chatBubble, {backgroundColor: theme.blue, marginRight: 40}] : [styles.chatBubble, {backgroundColor: theme.darkGrey, marginLeft: 40}]}>
+        <Text style={styles.messageContent}>{messageContent}</Text>
+        <Text style={styles.metaData}>{(sender === 'schmervisbot') ? 'You' : sender} - {date}</Text>
+      </View>
+      {(sender === 'schmervisbot') ? () => {} : renderAvatar(false)}
     </View>
   );
+};
+
+const renderAvatar = (which) => {
+  return <Image source={(which) ? getAsset('meIcon') : getAsset('youIcon')} style={styles.icon} resizeMode={'stretch'}/>;
 };
 
 ChatBubble.propTypes = {
@@ -37,19 +47,23 @@ ChatBubble.propTypes = {
 
 const styles = StyleSheet.create({
 
-  chatBubble: {
-    alignSelf: 'flex-start',
+  containerView: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
     margin: 10,
     marginBottom: 20,
-    borderRadius: 5,
+  },
+  chatBubble: {
+    alignSelf: 'flex-start',
     padding: 15,
+    borderRadius: 15,
   },
   left: {
-    backgroundColor: theme.blue,
     alignSelf: 'flex-start',
   },
   right: {
-    backgroundColor: theme.darkGrey,
     alignSelf: 'flex-end',
   },
   messageContent: {
@@ -60,6 +74,12 @@ const styles = StyleSheet.create({
     fontSize: 12,
     color: theme.white,
     alignSelf: 'flex-end',
+  },
+  icon: {
+    margin: 10,
+    tintColor: theme.darkGrey,
+    width: 20,
+    height: 20,
   },
 });
 

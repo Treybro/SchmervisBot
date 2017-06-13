@@ -13,6 +13,7 @@ import theme from 'Theme';
 import Loading from 'Loading';
 import TicketCard from 'TicketCard';
 import ChatBubble from 'ChatBubble';
+import MessageInput from 'MessageInput';
 
 /*
 * Responsible for rendering the chat view
@@ -67,6 +68,7 @@ class ChatRoomScreen extends Component {
             messageContent={rowData.messageContent}
             date={rowData.date}
             sender={rowData.sender}/>}/>
+        <MessageInput />
       </View>
     );
   }
