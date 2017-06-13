@@ -34,9 +34,9 @@ const chatRoomReducer = (state = chatRoomReducerDefaultState, action) => {
     };
   }
   case SENDING_MESSAGE: {
+    let date = new Date();
     let message = {
-      //  TODO - Datestamp
-      date: '21:31pm',
+      date: date.getHours() + ':' + date.getMinutes(),
       sender: 'schmervisbot',
       messageContent: action.message,
     };
